@@ -1,0 +1,289 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 93.75%  ;
+}
+
+:root {
+  --cardletter: rgb(196, 175, 211);
+}
+/*----------------body------------------------*/
+body{
+  background: #1d222c;
+  font-family: 'Poppins';
+  color:aliceblue;
+}
+
+/*trick do css para esconder da nossa tela, sem afetar os leitores de tela para acessibilidade*/
+.sr-only{
+  position: absolute; /*deixa o posicionamento absoluto ao pai, deixando a posição a cima-esquerda, e a frente de tudo*/
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin:-1px; 
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.container{
+  width: min(90vw, 800px);
+  margin: auto;
+}
+
+/*----------------titles------------------------*/
+h2{
+  margin-top: 2.4rem;
+  margin-bottom: 0.8rem;
+  color: rgba(148, 93, 250, 0.747);
+  font-weight: normal;
+}
+
+/*----------------links and buttons------------------------*/
+
+a {
+  color:rgba(148, 93, 250, 0.747) ;
+  text-decoration: none;
+}
+
+a:hover{
+  color: rgb(200, 171, 248);
+}
+
+button {
+  width: 100%;
+  height: 30px;
+  color: var(--cardletter);
+  background: #041336;
+  border: none;
+  padding: 0;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+button:hover {
+  background: #102049;
+}
+
+.button.cancel {
+  color: rgb(200, 171, 248);
+  border: 2px rgb(200, 171, 248) solid;
+  border-radius: 0.2rem;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: 0.2s ease-in-out;
+}
+
+
+.button.cancel:hover{
+  opacity: 1;
+}
+
+
+.button.new {
+  display: inline-block; /*display inline não pega margin. display block pega toda a largura, então usa-se inline-block em que consegue pegar margin sem utilizar toda a largura*/
+  margin-bottom: 0.8rem;
+}
+
+
+
+/*----------------header------------------------*/
+header{
+  background: #12151c;
+  padding: 2rem 0 7rem;
+  text-align: center;
+}
+
+#logo{
+  color: rgb(249, 82, 255);
+  font-weight: 100;
+}
+
+/*----------------balance------------------------*/
+#balance {
+  margin-top: -4rem;
+}
+#balance h2{
+  margin-top: 0;
+}
+
+/*----------------cards------------------------*/
+
+.card{
+  background: #3b4651;
+  padding: 1.5rem 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  color: var(--cardletter);
+}
+
+.card h3{
+  font-weight: normal;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card p{
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 3rem;
+  margin-top: 1rem;
+}
+
+/*----------------table------------------------*/
+#transaction {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+#data-table{
+  width: 100%;
+  border-spacing: 0 0.5rem; /*eixo vertical e eixo horizontal*/
+  
+}
+
+/*selecionando os filhos do thead e tdoby para aplicar propriedades em cada, por exemplo border radius nos extremos*/
+table thead tr th:first-child,
+table tbody tr td:first-child{
+  border-radius: 0.3rem 0 0 0.3rem;
+}
+
+table thead tr th:last-child,
+table tbody tr td:last-child{
+  border-radius: 0 0.3rem 0.3rem 0;
+}
+
+table th {
+  background: #2c3641;
+  color: rgba(148, 93, 250, 0.747);
+  font-weight: normal;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+table tbody tr {
+  opacity: 0.7;
+}
+table tbody tr:hover {
+  opacity: 1;
+}
+
+table td {
+  background: #2c3641;
+  text-align: center;
+  padding: 1rem 2rem;
+  color: var(--cardletter);
+}
+
+td.income {
+  color: #12a454;
+}
+
+td.expense{
+  color: #e92929;
+}
+
+
+/*----------------modal------------------------*/
+
+.modal-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0; /*fixando o posicionamento no topo é possivel abranger toda a tela com 100% de altura e largura*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /*para não aparecer na tela*/
+  visibility: hidden; /*para não ocupar o espaço*/
+  z-index: 999;
+}
+
+.modal-overlay.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal {
+  background: #3b4651;
+  padding: 2.4rem; /*utilizando padding para modificar o tamanho da caixinha de acordo com o tamanho do texto*/
+  position: relative;
+  z-index: 1;
+
+}
+
+/*----------------form------------------------*/
+
+#form {
+  max-width: 500px;
+}
+
+#form h2 {
+  margin-top: 0;
+}
+
+input {
+  border: none;
+  border-radius: 0.2rem;
+  padding: 0.6rem;
+  width: 100%;
+}
+
+
+.input-group {
+  margin-top: 0.8rem;
+}
+
+.input-group small {
+  opacity: 0.4;
+}
+
+.input-group.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-group.actions .button,
+.input-group.actions button{
+  width: 48%;
+
+}
+
+/*----------------footer------------------------*/
+footer{
+  text-align: center;
+  padding: 5rem 0 2rem;
+  color: rgb(249, 82, 255);
+  opacity: 0.6;
+} 
+
+/*----------------responsive------------------------*/
+
+@media (min-width: 800px) {
+
+  html{
+    font-size: 87.5%;
+  }
+
+  #balance{
+    display: grid;
+    grid-template-columns: 1fr 1.1fr 1fr; /*em fração de tamanho*/
+    gap: 3rem;
+  }
+
+ 
+}
